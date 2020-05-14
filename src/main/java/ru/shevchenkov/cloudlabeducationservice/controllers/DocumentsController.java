@@ -46,6 +46,7 @@ public class DocumentsController {
     public Document updateDocument(@PathVariable("id") Document document,
                                    @RequestBody Document updatedDocument) {
         BeanUtils.copyProperties(updatedDocument, document, "id");
+        document.setDateTime(LocalDateTime.now());
         return service.create(document);
     }
 
